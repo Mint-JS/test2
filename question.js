@@ -86,7 +86,9 @@ function startQuiz() {
 function showQuestion() {
     let idx = retryMode ? wrongs[current] : quizOrder[current];
     let q = questions[idx];
-    document.getElementById('question').textContent = q.question;
+    // 현재 문제 번호를 1번부터 표시
+    let displayNum = (retryMode ? current : current) + 1;
+    document.getElementById('question').textContent = `${displayNum}. ${q.question}`;
     const choicesUl = document.getElementById('choices');
     choicesUl.innerHTML = '';
     q.choices.forEach((choice, i) => {
